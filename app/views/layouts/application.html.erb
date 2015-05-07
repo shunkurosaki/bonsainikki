@@ -48,9 +48,13 @@
         <a class="navbar-brand" href="#">盆栽日記</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'プロフィール編集', edit_user_registration_path, :class => 'navbar-link' %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+            <% else %>
+              <li><%= link_to "登録", new_user_registration_path, :class => 'navbar-link'  %></li>
+              <li><%= link_to "ログイン", new_user_session_path, :class => 'navbar-link'  %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -62,14 +66,6 @@
           <%= bootstrap_flash %>
 
           <p class="navbar-text pull-right">
-          <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-          <% end %>
 
           <% if notice %>
             <p class="alert alert-notice"><%= notice %></p>
