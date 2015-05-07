@@ -6,5 +6,6 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << :name << :profile << :number_of_bonsai
+      devise_parameter_sanitizer.for(:account_update) << :name << :profile << :number_of_bonsai
     end
 end
