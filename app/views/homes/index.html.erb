@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-4">
+    <div class="well sidebar-nav">
+      <h3><%= link_to '貴女の盆栽を紹介しよう', new_post_path %></h3>
+    </div><!--/.well -->
+  </div><!--/span-->
+  <% @all_posts.each do |post| %>
+    <div class="col-lg-4">
+      <div class="well sidebar-nav">
+        <% if post.image? %>
+          <%= image_tag(post.image.thumb.url, :class => "width100") %>
+        <% end %>
+        <h3><%= link_to "#{post.title}", post_path(post.id) %></h3>
+        <p><%= post.content %></p>
+        <small>イイね8　</small>
+        <small>コメント8</small>
+      </div><!--/.well -->
+    </div><!--/span-->
+  <% end %>
+</div><!--/row-->

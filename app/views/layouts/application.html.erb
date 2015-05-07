@@ -45,7 +45,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">盆栽日記</a>
+        <%= link_to "盆栽日記", homes_path, :class => 'navbar-brand'  %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
@@ -64,16 +64,6 @@
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
-
-          <p class="navbar-text pull-right">
-
-          <% if notice %>
-            <p class="alert alert-notice"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="alert alert-error"><%= alert %></p>
-          <% end %>
-
           <%= yield %>
         </div>
         <div class="col-lg-3">
