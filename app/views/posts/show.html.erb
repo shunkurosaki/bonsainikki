@@ -10,4 +10,6 @@
 <%= link_to 'Back', posts_path %>
 
 <%= render @post.comments %>
-<%= render "comments/form" %>
+<% if user_signed_in? %>
+  <%= render "comments/form" %>
+<% end %>
