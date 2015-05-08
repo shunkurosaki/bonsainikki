@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :homes, only: [:index]
-  resources :posts
-  resources :users, only: [ :show]
+  resources :posts, except: [:index]
+  resources :comments, except: [:index, :show]
+  resources :users, only: [:show]
   root 'homes#index'
 end

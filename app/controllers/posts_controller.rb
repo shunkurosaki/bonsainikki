@@ -3,15 +3,10 @@ class PostsController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.all
-  end
-
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /posts/new

@@ -1,0 +1,7 @@
+<div class="comment">
+  <div class="commenter">
+    <%= link_to "#{comment.user.name}さん", comment.user %>
+    <div class="float-right"><%= l(comment.created_at, format: :veryshort) %></div>
+  </div>
+  <div class="comment-content"><%= comment.content %></div>
+</div>
