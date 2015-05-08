@@ -1,2 +1,57 @@
-<% provide(:title, @user.name) %>
-<h1>My page (<%= @user.name %>)</h1>
+<h1><%= @user.name %>さんの盆栽日記</h1>
+<h3>プロフィール</h3>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= @user.name %>さん</td>
+    </tr>
+    <tr>
+      <th>手入れしている盆栽の数</th>
+      <td>
+        <% if @user.number_of_bonsai.blank? %>
+          未設定
+        <% else %>
+          <%= @user.number_of_bonsai %>本
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>プロフィール</th>
+      <td>
+        <% if @user.profile.blank? %>
+          未設定
+        <% else %>
+          <%= @user.profile %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% @user.posts.order("id DESC").each_with_index do |post, i| %>
+  <% i = i + 1 %>
+  <% if i % 3 == 1 %>
+  <div class="row">
+  <% end %>
+    <div class="col-lg-4">
+      <div class="well sidebar-nav">
+          <% if post.image? %>
+          <%= image_tag(post.image.thumb.url, :class => "width100") %>
+        <% end %>
+        <h3><%= link_to "#{post.title}", post_path(post.id) %></h3>
+        <small><%= l(post.created_at, format: :veryshort) %></small>
+        <p><%= post.content.truncate(90) %></p>
+        <p>
+          <%= link_to "もっと読む", post_path(post.id), :class => "btn btn-large btn-info float-left" %>
+          <%= link_to "#{post.user.name}さんの盆栽日記", post.user, :class => 'btn btn-small btn-info margin-top' %>
+        </p>
+        <p>
+          <small><%= link_to "コメント#{post.comments.length}件", post %></small>
+        </p>
+      </div><!--/.well -->
+    </div><!--/span-->
+  <% if i % 3 == 0 %>
+  </div>
+  <% end %>
+<% end %>
