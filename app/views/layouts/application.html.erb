@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Bonsainikki" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "盆栽日記" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -62,24 +62,33 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3><%= link_to "あなたの自慢の盆栽を紹介しよう", new_post_path %></h3>
-          </div><!--/.well -->
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="col-lg-9">
+        <div class="col-lg-9 col-lg-push-3">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
+        <div class="col-lg-3 col-lg-pull-9">
+          <div class="well sidebar-nav">
+            <h3><%= link_to "あなたの自慢の盆栽を紹介しよう！", new_post_path %></h3>
+          </div><!--/.well -->
+          <div class="well sidebar-nav">
+            <h3>新着日記</h3>
+            <ul class="nav nav-list">
+              <% Post.all.order("id DESC").each_with_index do |post, i| %>
+                <% break if i > 9 %>
+                <li><small><%= link_to "・#{post.title}", post %></small></li>
+              <% end %>
+            </ul>
+          </div><!--/.well -->
+          <div class="well sidebar-nav">
+            <h3>最近のコメント</h3>
+            <ul class="nav nav-list">
+              <% Comment.all.order("id DESC").each_with_index do |comment, i| %>
+                <% break if i > 9 %>
+                <li><small><%= link_to "・#{comment.content.truncate(18)}", comment.post %></small></li>
+              <% end %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
       </div><!--/row-->
 
       <footer>
