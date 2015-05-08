@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
   def registration_confirmation
     @greeting = "Hi"
 
-    mail to: "shunkurosakisk@gmail.com"
+    mail to: "bonsainikki@gmail.com"
   end
 end
