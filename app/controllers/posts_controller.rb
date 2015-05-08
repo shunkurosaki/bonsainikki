@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: '投稿が作成されました。.' }
+        format.html { redirect_to @post, notice: '投稿が作成されました。' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
