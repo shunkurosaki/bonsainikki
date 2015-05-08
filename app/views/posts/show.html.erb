@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @post.title %></p>
+<h2><%= @post.title %></h2>
+<p><small><%= l(@post.created_at, format: :mid) %></small></p>
 <p><%= @post.content %></p>
 <% if @post.image? %>
-　<%= image_tag @post.image.thumb.url %>
+　<p><%= image_tag @post.image.thumb.url %></p>
 <% end %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to '編集', edit_post_path(@post) %> |
+<%= link_to '戻る', homes_path %>
 
 <%= render @post.comments %>
 <% if user_signed_in? %>
