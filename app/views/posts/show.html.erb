@@ -4,7 +4,7 @@
 <p><small><%= l(@post.created_at, format: :mid) %></small></p>
 <p><%= @post.content %></p>
 <% if @post.image? %>
-　<p><%= image_tag @post.image.thumb.url %></p>
+　<p><%= image_tag(@post.image.url, :class => "width50") %></p>
 <% end %>
 
 <%= link_to '編集', edit_post_path(@post) %> |

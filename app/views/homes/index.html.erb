@@ -6,7 +6,7 @@
     <div class="col-lg-6">
       <div class="well sidebar-nav">
           <% if post.image? %>
-          <%= image_tag(post.image.thumb.url, :class => "width100") %>
+          <%= image_tag(post.image.url, :class => "width100") %>
         <% end %>
         <h3><%= link_to "#{post.title}", post_path(post.id) %></h3>
         <small><%= l(post.created_at, format: :veryshort) %></small>
