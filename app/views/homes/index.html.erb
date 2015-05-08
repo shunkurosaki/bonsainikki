@@ -5,13 +5,20 @@
   <% end %>
     <div class="col-lg-6">
       <div class="well sidebar-nav">
-        <% if post.image? %>
+          <% if post.image? %>
           <%= image_tag(post.image.thumb.url, :class => "width100") %>
         <% end %>
         <h3><%= link_to "#{post.title}", post_path(post.id) %></h3>
+        <small><%= l(post.created_at, format: :veryshort) %></small>
         <p><%= post.content.truncate(90) %></p>
-        <small>イイね8　</small>
-        <small>コメント8</small>
+        <p>
+          <%= link_to "もっと読む", post_path(post.id), :class => "btn btn-large btn-info float-left" %>
+          <%= link_to "#{post.user.name}さんの盆栽日記", post.user, :class => 'btn btn-small btn-info margin-left' %>
+        </p>
+        <p>
+          <small>イイね8　</small>
+          <small>コメント8</small>
+        </p>
       </div><!--/.well -->
     </div><!--/span-->
   <% if i % 2 == 0 %>
