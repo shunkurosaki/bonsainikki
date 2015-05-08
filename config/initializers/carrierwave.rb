@@ -12,8 +12,9 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
+      config.storage = :fog
       config.fog_directory = 'bonsainikki.pro'
-      # config.asset_host = 'https://assets/bonsainikki.com'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/bonsainikki.pro'
       config.cache_storage = :fog #キャッシュの場所をS3に変更
       config.cache_dir = "#{Rails.root}/tmp/uploads" #for Heroku
     # when 'staging'
