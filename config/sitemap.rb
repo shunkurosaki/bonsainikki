@@ -1,7 +1,7 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://bonsainikki.com"
-SitemapGenerator::Sitemap.sitemaps_host = "https://s3-ap-northeast-1.amazonaws.com/bonsainikki.sitemap"
-SitemapGenerator::Sitemap.public_path = 'public/'
+SitemapGenerator::Sitemap.sitemaps_host = "https://bonsainikkisitemap.s3-ap-northeast-1.amazonaws.com"
+SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
 
