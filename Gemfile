@@ -57,3 +57,8 @@ gem 'carrierwave',github: 'carrierwaveuploader/carrierwave'
 gem 'rmagick'
 gem 'fog'
 gem 'mandrill-api'
+gem 'rails_config'
+
+# SEO
+gem 'meta-tags', :require => 'meta_tags'
+gem 'sitemap_generator'
